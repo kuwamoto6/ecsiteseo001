@@ -1,0 +1,3 @@
+chromedriver-binary
+beautifulsoup4
+selenium
