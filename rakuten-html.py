@@ -5,7 +5,7 @@ from selenium.webdriver.chrome import service as fs
 from bs4 import BeautifulSoup
 import time
 
-page = 'https://search.rakuten.co.jp/search/mall/%E3%83%80%E3%82%A4%E3%82%A8%E3%83%83%E3%83%88/'
+search = 'ダイエット'
 itemWord = '17日終了★クーポンで198円★サラシアブラック'
 
 driver_path = '/app/.chromedriver/bin/chromedriver'
@@ -18,14 +18,13 @@ driver = webdriver.Chrome(service=chrome_service, options=options)
 ranking = []
 for i in range(3):
 	num = i + 1
-	driver.get(page + '?p=' + str(num))
+	driver.get('https://search.rakuten.co.jp/search/mall/' + search + '/?p=' + str(num))
 	html = driver.page_source
 	soup = BeautifulSoup(html, 'html.parser')
 	for itemtitle in soup.find_all(class_='content title'):
 		itemName = itemtitle.text
 		if '[PR]' in itemName:
 			continue
-
 		ranking.append(itemName)
 	time.sleep(1)
 
