@@ -5,6 +5,7 @@ from selenium.webdriver.chrome import service as fs
 from bs4 import BeautifulSoup
 import time
 from datetime import datetime,timezone,timedelta
+import pytz
 
 search = 'ダイエット'
 itemWord = 'スラミー /Slamee'
