@@ -7,7 +7,7 @@ import time
 from datetime import datetime,timezone,timedelta
 
 search = 'ダイエット'
-itemWord = '17日終了★クーポンで198円★サラシアブラック'
+itemWord = 'スラミー /Slamee'
 
 driver_path = '/app/.chromedriver/bin/chromedriver'
 chrome_service = fs.Service(executable_path=driver_path)
@@ -40,7 +40,7 @@ print('順位：')
 rankin = 'no'
 for i in range(100):
 	if itemWord in ranking[i]:
-		print(i + 1)
+		print(str(i + 1) + '位')
 		rankin = 'yes'
 
 if rankin == 'no':
