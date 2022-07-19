@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome import service as fs
 from bs4 import BeautifulSoup
 import time
+from datetime import datetime,timezone,timedelta
 
 search = 'ダイエット'
 itemWord = '17日終了★クーポンで198円★サラシアブラック'
@@ -30,8 +31,10 @@ for i in range(3):
 
 del ranking[100:]
 
-print(ranking)
+dt_now = datetime.now(pytz.timezone('Asia/Tokyo'))
+dt_now = dt_now.strftime('%Y年%m月%d日')
 
+print(dt_now)
 print('順位：')
 
 rankin = 'no'
