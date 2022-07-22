@@ -9,6 +9,7 @@ import pytz
 
 search = 'ダイエット'
 itemWord = 'スラミー /Slamee'
+shopWord = 'イコリス オンラインショップ'
 
 driver_path = '/app/.chromedriver/bin/chromedriver'
 chrome_service = fs.Service(executable_path=driver_path)
@@ -23,11 +24,17 @@ for i in range(3):
 	driver.get('https://search.rakuten.co.jp/search/mall/' + search + '/?p=' + str(num))
 	html = driver.page_source
 	soup = BeautifulSoup(html, 'html.parser')
-	for itemtitle in soup.find_all(class_='content title'):
-		itemName = itemtitle.text
-		if '[PR]' in itemName:
-			continue
-		ranking.append(itemName)
+	for item in soup.find_all(class_='searchresultitem'):
+		for shopLink in item.find_all(class_='content merchant _ellipsis'):
+			shopName = shopLink.text
+		for itemtitle in item.find_all(class_='content title'):
+			itemName = itemtitle.text
+			if '[PR]' in itemName:
+				continue
+			shop = []
+			shop.append(shopName)
+			shop.append(itemName)
+			ranking.append(shop)
 	time.sleep(1)
 
 del ranking[100:]
@@ -40,9 +47,10 @@ print('順位：')
 
 rankin = 'no'
 for i in range(100):
-	if itemWord in ranking[i]:
-		print(str(i + 1) + '位')
-		rankin = 'yes'
+	if shopWord in ranking[i][0]:
+		if itemWord in ranking[i][1]:
+			print(str(i + 1) + '位')
+			rankin = 'yes'
 
 if rankin == 'no':
 	print('圏外')
