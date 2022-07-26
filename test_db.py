@@ -9,6 +9,9 @@ cur = conn.cursor()  # カーサー
 cur.execute("select version()") # クエリの実行
 print(cur.fetchone()) 
 
+cur.execute("INSERT INTO aequalis (rakuten) VALUES ('テスト')")
+conn.commit()
+
 # コネクション等は閉じる。
 cur.close()
 conn.close()
