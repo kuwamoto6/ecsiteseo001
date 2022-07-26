@@ -40,7 +40,7 @@ for i in range(3):
 del ranking[100:]
 
 dt_now = datetime.now(pytz.timezone('Asia/Tokyo'))
-dt_now = dt_now.strftime('%Y年%m月%d日')
+dt_now = dt_now.strftime('%Y/%m/%d')
 
 print(dt_now)
 print('順位：')
