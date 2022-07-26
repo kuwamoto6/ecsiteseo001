@@ -9,10 +9,7 @@ cur = conn.cursor()  # カーサー
 cur.execute("select version()") # クエリの実行
 print(cur.fetchone()) 
 
-cur.execute("INSERT INTO aequalis (day) VALUES ('2022/07/26')")
-cur.execute("INSERT INTO aequalis (rakuten) VALUES ('テスト')")
-cur.execute("INSERT INTO aequalis (amazon) VALUES ('テスト')")
-cur.execute("INSERT INTO aequalis (yahoo) VALUES ('テスト')")
+cur.execute("INSERT INTO aequalis (day,rakuten,amazon,yahoo) VALUES ('2022/07/26','テスト','テスト','テスト')")
 conn.commit()
 
 # コネクション等は閉じる。
