@@ -1,8 +1,5 @@
-<html>
-<head><title>PHP TEST</title></head>
-<body>
+<?php
 
-<p>Hello World</p>
+header('Location: /index.html');
 
-</body>
-</html>
+?>
